@@ -1,0 +1,171 @@
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* Background image with overlay for readability */
+    background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("contact-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container for Centered Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styling */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff6347;  /* Tomato color */
+    text-align: center;
+}
+
+/* Form Styling */
+form {
+    background: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #32cd32;  /* Lime green */
+    color: #fff;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 600;
+}
+
+button:hover {
+    background: #2eb82e;
+}
+
+/* Search Form Styling */
+.search-form {
+    background: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-form input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+.search-form button {
+    padding: 12px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-form button:hover {
+    background: #006ae6;
+}
+
+/* Table Styling */
+table {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #007bff;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+td {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Action Links */
+a {
+    text-decoration: none;
+    color: #007bff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+
+a:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+.delete-link {
+    color: #dc3545;
+}
+
+.delete-link:hover {
+    background: #dc3545;
+    color: #fff;
+}
+
+/* Back Link Styling */
+.back-link {
+    display: inline-block;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}
+

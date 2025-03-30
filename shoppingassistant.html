@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Shopping Assistant</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: url('https://source.unsplash.com/1600x900/?shopping,ecommerce') no-repeat center center/cover;
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+            margin: 0;
+            padding: 0;
+        }
+        .dark-mode {
+            background: #222;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+        }
+        h1 {
+            font-weight: 600;
+            color: #007BFF;
+        }
+        input, select {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 18px;
+            border: none;
+            background: #007BFF;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .product-card {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .product-card img {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+        .dark-mode .product-card {
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛒 Smart Shopping Assistant</h1>
+        <select id="currency" onchange="updatePrices()">
+            <option value="INR">INR (₹)</option>
+            <option value="USD">USD ($)</option>
+        </select>
+        <input type="text" id="search" placeholder="Search for a product..." oninput="searchProduct()">
+        <div id="results"></div>
+        <button onclick="toggleTheme()">Toggle Dark Mode</button>
+    </div>
+
+    <script>
+        let currencySymbol = "₹";
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function updatePrices() {
+            let selectedCurrency = document.getElementById("currency").value;
+            currencySymbol = selectedCurrency === "INR" ? "₹" : "$";
+            searchProduct();
+        }
+
+        function searchProduct() {
+            let query = document.getElementById('search').value.toLowerCase();
+            let resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = "";
+
+            let sampleProducts = [
+                { name: "iPhone 14", price: 799, store: "Amazon", img: "https://via.placeholder.com/80" },
+                { name: "Samsung Galaxy S23", price: 749, store: "Flipkart", img: "https://via.placeholder.com/80" },
+                { name: "MacBook Air M2", price: 1099, store: "Amazon", img: "https://via.placeholder.com/80" },
+                { name: "Sony WH-1000XM4", price: 299, store: "Flipkart", img: "https://via.placeholder.com/80" },
+                { name: "Dell XPS 13", price: 999, store: "Amazon", img: "https://via.placeholder.com/80" },
+                { name: "AirPods Pro", price: 199, store: "Amazon", img: "https://via.placeholder.com/80" },
+                { name: "PS5 Console", price: 499, store: "Flipkart", img: "https://via.placeholder.com/80" },
+                { name: "Samsung 4K TV", price: 699, store: "Amazon", img: "https://via.placeholder.com/80" },
+                { name: "Apple Watch Series 8", price: 399, store: "Flipkart", img: "https://via.placeholder.com/80" }
+            ];
+
+            let filteredProducts = sampleProducts.filter(product => product.name.toLowerCase().includes(query));
+            
+            if (filteredProducts.length === 0) {
+                resultsDiv.innerHTML = "<p>No products found</p>";
+            } else {
+                filteredProducts.forEach(product => {
+                    let productDiv = document.createElement('div');
+                    productDiv.classList.add('product-card');
+                    productDiv.innerHTML = `
+                        <img src="${product.img}" alt="${product.name}">
+                        <div>
+                            <p><strong>${product.name}</strong></p>
+                            <p>${currencySymbol}${product.price} at ${product.store}</p>
+                        </div>
+                    `;
+                    resultsDiv.appendChild(productDiv);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+
